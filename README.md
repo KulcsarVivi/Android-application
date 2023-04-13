@@ -1,1 +1,1 @@
-# Szakdolgozat
+# Hatékony játékos számtan oktatás
