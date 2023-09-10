@@ -6,8 +6,10 @@
     <color name="lightBlue">#9CCBDA</color>
     <color name="yellow">#E5FF4F</color>
     <color name="orange">#FF874F</color>
+    <color name="lightOrange">#C89277</color>
     <color name="green">#5BFF4F</color>
     <color name="red">#FF4E4E</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
 </resources>

@@ -26,11 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressDialog mLoadingBar;
 
-    String username;
-
-    //username = regUsernameEditText.getText().toString(); //Hello name
-    // intent.putExtra("Username", username);          //Hello name
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
