@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.gameCardView:
-                i = new Intent(MenuActivity.this, GameMenuActivity.class);
+                i = new Intent(MenuActivity.this, DifficultyLevelActivity.class);
                 startActivity(i);
                 break;
             case R.id.rankingListCardView:

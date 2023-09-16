@@ -7,68 +7,19 @@
     tools:context=".MenuActivity"
     android:background="@drawable/bg">
 
-    <TextView
-        android:id="@+id/textViewDifficultyLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" Kérlek válaszd ki a nehézségi szintet. "
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:background="@drawable/input_bg"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        />
-
-<RadioGroup
-    android:id="@+id/radioGroup"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal"
-    android:layout_margin="10dp"
-    android:layout_below="@+id/textViewDifficultyLevel">
-
-    <RadioButton
-        android:background="@color/green"
-        android:layout_width="130dp"
-        android:layout_height="150dp"
-        android:button="@color/transparent"
-        android:text="Könnyű"
-        android:drawableTop="@drawable/game_menu_easy_icon"
-        android:drawableTint="@color/white"
-        android:textAlignment="center"
-        android:layout_marginHorizontal="5dp"/>
-
-    <RadioButton
-        android:layout_width="130dp"
-        android:layout_height="150dp"
-        android:background="@color/orange"
-        android:button="@color/transparent"
-        android:text="Közepes"
-        android:drawableTop="@drawable/game_menu_medium_icon"
-        android:drawableTint="@color/white"
-        android:textAlignment="center"
-        android:layout_marginHorizontal="5dp"/>
-
-    <RadioButton
-        android:layout_width="130dp"
-        android:layout_height="150dp"
-        android:background="@color/red"
-        android:button="@color/transparent"
-        android:text="Nehéz"
-        android:drawableTop="@drawable/game_menu_hard_icon"
-        android:drawableTint="@color/white"
-        android:textAlignment="center"
-        android:layout_marginHorizontal="5dp"/>
-
-</RadioGroup>
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieGameMenu"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:elevation="5dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_lmm7fisw" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/radioGroup"
+        android:layout_below="@+id/lottieGameMenu"
         android:layout_marginTop="20dp"
         android:layout_margin="20dp"
         android:columnCount="2"
@@ -76,19 +27,18 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/additionCardView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
+            android:layout_height="130dp"
             android:layout_row="0"
+            android:layout_rowWeight="1"
             android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/additionCardView"
-            >
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -100,33 +50,32 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/game_menu_addition_icon"
-                    />
+                    android:src="@drawable/game_menu_addition_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Összeadás"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:id="@+id/subtractionCardView"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="0"
+            android:layout_rowWeight="1"
             android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/subtractionCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -138,59 +87,18 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/game_menu_subtraction_icon"
-                    />
+                    android:src="@drawable/game_menu_subtraction_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kivonás"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:layout_columnSpan="2"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/backCardView">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/game_menu_back_icon"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Vissza"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
 
 
     </GridLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DifficultyLevelActivity"
+    android:background="@drawable/bg">
+
+    <TextView
+        android:id="@+id/textViewDifficultyLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_bg"
+        android:gravity="center"
+        android:text="  Kérlek válaszd ki a nehézségi szintet.  "
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/textViewDifficultyLevel">
+
+        <RadioButton
+            android:id="@+id/easyRadioButton"
+            android:background="@drawable/easy_bg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:button="@color/transparent"
+            android:text="Könnyű"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/game_menu_easy_icon"
+            android:drawableTint="@color/white"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
+
+        <RadioButton
+            android:id="@+id/mediumRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/medium_bg"
+            android:button="@color/transparent"
+            android:text="Közepes"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/game_menu_medium_icon"
+            android:drawableTint="@color/white"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
+
+        <RadioButton
+            android:id="@+id/hardRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/hard_bg"
+            android:button="@color/transparent"
+            android:text="Nehéz"
+            android:textStyle="bold"
+            android:drawableTop="@drawable/game_menu_hard_icon"
+            android:drawableTint="@color/white"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="right"
+        android:background="@drawable/btn_bg"
+        android:text="Tovább"
+        android:layout_margin="20dp"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

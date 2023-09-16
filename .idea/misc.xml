@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/btn_bg.xml" value="0.1555" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/easy.xml" value="0.173" />
+        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/easy_bg.xml" value="0.14666666666666667" />
+        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/hard_bg.xml" value="0.19" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/ic_email.xml" value="0.171" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/ic_person.xml" value="0.1555" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/ic_security.xml" value="0.171" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/input_bg.xml" value="0.1555" />
+        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/maedium_bg.xml" value="0.19" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/drawable/textv_bg.xml" value="0.1555" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_badge.xml" value="0.30052083333333335" />
-        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_game_menu.xml" value="0.1" />
+        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_difficulty_level.xml" value="0.30052083333333335" />
+        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_game_menu.xml" value="0.3333333333333333" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_login.xml" value="0.23026315789473684" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_main.xml" value="0.30052083333333335" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_menu.xml" value="0.3333333333333333" />
@@ -19,6 +23,7 @@
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_profile.xml" value="0.30052083333333335" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_ranking_list.xml" value="0.30052083333333335" />
         <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/sulika/6.felev/Playful-math-projekt/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
       </map>
     </option>
   </component>

@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-
+//TODO hibás felhasználónév jelszó kezelése, ha nem szerepel db-ben
     TextView registerBtn;
     EditText loginEmailEditText, loginPasswordEditText;
     Button loginBtn;
