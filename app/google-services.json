@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "966903074302",
+    "firebase_url": "https://playful-math-default-rtdb.firebaseio.com",
     "project_id": "playful-math",
     "storage_bucket": "playful-math.appspot.com"
   },
