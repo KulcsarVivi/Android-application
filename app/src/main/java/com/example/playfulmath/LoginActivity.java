@@ -22,9 +22,9 @@ import com.google.firebase.ktx.Firebase;
 
 public class LoginActivity extends AppCompatActivity {
 //TODO hibás felhasználónév jelszó kezelése, ha nem szerepel db-ben
-    TextView registerBtn;
-    EditText loginEmailEditText, loginPasswordEditText;
-    Button loginBtn;
+    private TextView registerBtn;
+    private EditText loginEmailEditText, loginPasswordEditText;
+    private Button loginBtn;
     //Ez lehetne static is?
     private FirebaseAuth mAuth;
     private ProgressDialog mLoadingBar;

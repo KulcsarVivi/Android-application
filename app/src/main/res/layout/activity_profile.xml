@@ -7,10 +7,43 @@
     tools:context=".ProfileActivity"
     android:background="@drawable/bg">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileBackCardView"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/back_icon" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/profileTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="32dp"
         android:text="Profil"
         android:textColor="@color/black"
         android:textSize="34sp"
@@ -112,18 +145,6 @@
         app:layout_constraintTop_toBottomOf="@+id/profilePasswordEditText" />
 
     <Button
-        android:id="@+id/menuButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/btn_bg"
-        android:text="Menü"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/profileConfirmPasswordEditText"
-        app:layout_constraintStart_toStartOf="@+id/profileConfirmPasswordEditText"
-        app:layout_constraintTop_toBottomOf="@+id/profileConfirmPasswordEditText" />
-
-    <Button
         android:id="@+id/changeButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -145,5 +166,44 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/profileConfirmPasswordEditText"
         app:layout_constraintTop_toBottomOf="@+id/profileConfirmPasswordEditText" />
+
+
+    <LinearLayout
+        android:id="@+id/profileLottieLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="280dp"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieProfile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:elevation="5dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/animation_lmutoevf"
+            tools:layout_editor_absoluteX="180dp"
+            tools:layout_editor_absoluteY="575dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/profilePointTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="335dp"
+        android:background="@drawable/textview_bg"
+        android:text=" Pont "
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileTextView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,17 +10,18 @@ import android.widget.Button;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button menuButton, changeButton, deleteButton;
+    private Button changeButton, deleteButton;
+    private CardView backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        menuButton = (Button) findViewById(R.id.menuButton);
+        backButton = (CardView) findViewById(R.id.profileBackCardView);
         changeButton = (Button) findViewById(R.id.changeButton);
         deleteButton = (Button) findViewById(R.id.deleteButton);
 
-        menuButton.setOnClickListener((View.OnClickListener) this);
+        backButton.setOnClickListener((View.OnClickListener) this);
         changeButton.setOnClickListener((View.OnClickListener) this);
         deleteButton.setOnClickListener((View.OnClickListener) this);
     }
@@ -29,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         Intent i;
         switch (v.getId()) {
-            case R.id.menuButton:
+            case R.id.profileBackCardView:
                 i = new Intent(this, MenuActivity.class);
                 startActivity(i);
                 break;

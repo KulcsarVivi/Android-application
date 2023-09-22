@@ -8,7 +8,7 @@
     android:background="@drawable/bg">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieSplahScreen"
+        android:id="@+id/lottieProfile"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_centerInParent="true"
@@ -21,7 +21,7 @@
         android:id="@+id/appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lottieSplahScreen"
+        android:layout_below="@+id/lottieProfile"
         android:layout_centerHorizontal="true"
         android:text="  Számolós Gyümölcskaland  "
         android:textColor="@color/orange"

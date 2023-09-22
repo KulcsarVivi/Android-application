@@ -145,7 +145,7 @@
         android:layout_marginBottom="110dp">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieSplahScreen"
+            android:id="@+id/lottieProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:elevation="5dp"
