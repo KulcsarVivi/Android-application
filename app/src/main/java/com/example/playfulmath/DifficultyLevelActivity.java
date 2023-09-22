@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 
 public class DifficultyLevelActivity extends AppCompatActivity {
 
+    private CardView gameMenuBackCardView;
     private RadioButton easy, medium, hard;
     private Button next;
 
@@ -34,12 +35,17 @@ public class DifficultyLevelActivity extends AppCompatActivity {
                 finish();
             }
         });
-//valszleg butaság..
-        new Handler().postDelayed(new Runnable() {
+
+        gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
+
+        gameMenuBackCardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View view) {
+                Intent intent = new Intent(DifficultyLevelActivity.this,MenuActivity.class);
+                startActivity(intent);
+                finish();
             }
-        }, 4000);
+        });
     }
     //TODO itt még majd be kell állítani a nehézséget activity indítás előtt!
     // TODO kiválasztani a megfelelő szintet és egy buttonnal léptetni a kövi Activity-re
