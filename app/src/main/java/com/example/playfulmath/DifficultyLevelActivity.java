@@ -30,7 +30,7 @@ public class DifficultyLevelActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DifficultyLevelActivity.this, GameMenuActivity.class);
+                Intent intent = new Intent(DifficultyLevelActivity.this, FruitActivity.class);
                 startActivity(intent);
                 finish();
             }
