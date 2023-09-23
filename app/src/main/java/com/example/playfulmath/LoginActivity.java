@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
+    
     //TODO Try-catchal megcsinálni, progress bar
     private void checkDatas() {
         String email = loginEmailEditText.getText().toString();
@@ -88,6 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
                         startActivity(intent);
                         finish();
+                    }
+                    else {
+                        Toast.makeText(LoginActivity.this, "Helytelen felhasználónév vagy jelszó!", Toast.LENGTH_SHORT).show();
+                        mLoadingBar.dismiss();
                     }
                 }
             });

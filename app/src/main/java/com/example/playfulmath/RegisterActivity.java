@@ -47,8 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
-
         if(loginBtn != null) {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
