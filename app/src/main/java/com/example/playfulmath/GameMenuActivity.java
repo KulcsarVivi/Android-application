@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class GameMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private CardView additionCardView, subtractionCardView;
+    private CardView additionCardView, subtractionCardView, gameMenuBackCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +20,11 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
 
         additionCardView = (CardView) findViewById(R.id.additionCardView);
         subtractionCardView = (CardView) findViewById(R.id.subtractionCardView);
+        gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
 
         additionCardView.setOnClickListener((View.OnClickListener) this);
         subtractionCardView.setOnClickListener((View.OnClickListener) this);
+        gameMenuBackCardView.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
@@ -30,11 +32,15 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
         Intent i;
         switch (v.getId()) {
             case R.id.additionCardView:
-                i = new Intent(this, ProfileActivity.class);    //TODO game with +
+                i = new Intent(this, FruitActivity.class);    //TODO game with +
                 startActivity(i);
                 break;
             case R.id.subtractionCardView:
-                i = new Intent(this, BadgeActivity.class);      //TODO game with -
+                i = new Intent(this, FruitActivity.class);      //TODO game with -
+                startActivity(i);
+                break;
+            case R.id.gameMenuBackCardView:
+                i = new Intent(this, DifficultyLevelActivity.class);
                 startActivity(i);
                 break;
         }
