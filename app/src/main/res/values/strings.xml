@@ -1,6 +1,24 @@
 <resources>
     <string name="app_name">Playful Math</string>
-    <string name="app_info1">A játék gyermekeknek készült. Melyben 10-ig lehet összeadást és kivonást gyakorolni. Be lehet állítani a nehézségi szintet,
-    majd a műveletet és végül, hogy milyen gyümölccsel szeretnétek számolni. Ezután kezdődhet a kvíz. Minden kör 5 feladatot tartalmaz. Közben és a végén is kaptok visszajelzést a
-    válaszok helyességéről... </string>
+    <string name="app_info1">A játék gyermekeknek készült. Melyben 10-ig lehet összeadást és kivonást gyakorolni. Be lehet állítani a nehézségi szintet, műveletet
+        és a gyümölcsöt. </string>
+    <string name="app_info2">Regisztráció után be tudtok jelentkezni. Bejelentkezés után a menü fogad titeket, melynek a lehetőségeit egyenként kifejtem.</string>
+
+    <string name="app_info_profil">Profil: Ide kattintva megjelenik az eddig szerzett pontszámotok, felhasználónevetek, e-mail címetek. Itt tudjátok módosítani
+        az adataitokat, jelszavatokat, az új adat beírása után a módosítás gombra kattintva. A törlés gomb a profil végleles törlésére szolgál.</string>
+
+    <string name="app_info_info">Infó: Ide kattintva megjelenik ez a felület, ahol az alkalmazásról találtok leírást.</string>
+
+    <string name="app_info_jatek">Játék: Ide kattintva ki kell választani elsőként a nehézségi szintet, majd a tovább gombra kattintva a műveletet (összeadás/kivonás)
+        és a gyümölcsöt, amivel szeretnétek a műveleteket végezni. Ezután elindul a kvíz. Itt 5 feladat következik egymás után. Közben és a végén is kaptok
+        visszajelzést a válaszok helyességéről.</string>
+
+    <string name="app_info_jelvenyek">Jelvények: Ide kattintva megjelenik az összes jelvény, ezek közül, csak azon lesznek színesek, melyeket már megszereztél, a
+        többi szürkén fog megjelenni. Ha rákattintasz elolvashatod a jelvény nevét és, hogy miért kaptad.</string>
+
+    <string name="app_info_ranglista">Ranglista: Ide kattintva megjelenik az összes játékos pontszáma és, hogy ez alapján hanyadik helyet foglaljátok el a játékosok között.</string>
+
+    <string name="app_info_kijelentkezes">Kijelentkezés: Ide kattintva tudtok kilépni a játékból.</string>
+
+    <string name="app_info3">Örülök, hogy használjátok az alkalmazást, jó szórakozást kívánok!</string>
 </resources>
