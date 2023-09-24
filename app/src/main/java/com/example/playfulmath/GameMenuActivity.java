@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,15 +33,16 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
         Intent i;
         switch (v.getId()) {
             case R.id.additionCardView:
-                i = new Intent(this, FruitActivity.class);    //TODO game with +
+                i = new Intent(this, GameActivity.class);    //TODO game with +
+
                 startActivity(i);
                 break;
             case R.id.subtractionCardView:
-                i = new Intent(this, FruitActivity.class);      //TODO game with -
+                i = new Intent(this, GameActivity.class);      //TODO game with -
                 startActivity(i);
                 break;
             case R.id.gameMenuBackCardView:
-                i = new Intent(this, FruitActivity.class);
+                i = new Intent(this, DifficultyLevelActivity.class);
                 startActivity(i);
                 break;
         }

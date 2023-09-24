@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity"
+    android:background="@drawable/bg">
+
+    <RelativeLayout
+        android:id="@+id/xRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/gameExitCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/game_exit_icon" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameTaskCounterRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/xRelativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/xRelativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/xRelativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textview_bg"
+            android:padding="8dp"
+            android:text="1/5">
+
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameQuestionRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/textview_bg"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xRelativeLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/gameNumber1ImageView"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_centerVertical="true">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gameOperationImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gameNumber2ImageView"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"></ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameAnswerRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="55dp"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameQuestionRelativeLayout">
+
+        <ImageView
+            android:id="@+id/gameAnswer1ImageView"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/input_bg"
+            android:padding="10dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_alignParentLeft="true"
+            >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gameAnswer2ImageView"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/input_bg"
+            android:padding="10dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_alignParentRight="true">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gameAnswer3ImageView"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/input_bg"
+            android:padding="10dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/gameAnswer4ImageView"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/input_bg"
+            android:padding="10dp"
+            android:src="@drawable/fruit_watermelon_icon"
+            app:layout_constraintTop_toBottomOf="@+id/gameAnswer2ImageView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true">
+        </ImageView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameNextRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameAnswerRelativeLayout">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/gameNextCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/next_icon" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
