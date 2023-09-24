@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayfulMath">
         <activity
+            android:name=".ResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".GameActivity"
             android:exported="false" />
         <activity

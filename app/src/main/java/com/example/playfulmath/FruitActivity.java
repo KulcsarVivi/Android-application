@@ -37,37 +37,37 @@ public class FruitActivity extends AppCompatActivity implements View.OnClickList
         Intent i;
         switch (v.getId()){
             case R.id.fruitBackCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
+                i = new Intent(FruitActivity.this, DifficultyLevelActivity.class);
                 startActivity(i);
                 finish();
                 break;
             case R.id.appleCardView:
-                i = new Intent(FruitActivity.this, GameActivity.class);
+                i = new Intent(FruitActivity.this, GameMenuActivity.class);
                 startActivity(i);
                 finish();
                 break;
             case R.id.pearCardView:
-                i = new Intent(FruitActivity.this, GameActivity.class);
+                i = new Intent(FruitActivity.this, GameMenuActivity.class);
                 startActivity(i);
                 finish();
                 break;
             case R.id.bananaCardView:
-                i = new Intent(FruitActivity.this, GameActivity.class);
+                i = new Intent(FruitActivity.this, GameMenuActivity.class);
                 startActivity(i);
                 finish();
                 break;
             case R.id.grapeCardView:
-                i = new Intent(FruitActivity.this, GameActivity.class);
+                i = new Intent(FruitActivity.this, GameMenuActivity.class);
                 startActivity(i);
                 finish();
                 break;
             case R.id.strawberryCardView:
-                i = new Intent(FruitActivity.this, GameActivity.class);
+                i = new Intent(FruitActivity.this, GameMenuActivity.class);
                 startActivity(i);
                 finish();
                 break;
             case R.id.watermelonCardView:
-                i = new Intent(FruitActivity.this, GameActivity.class);
+                i = new Intent(FruitActivity.this, GameMenuActivity.class);
                 startActivity(i);
                 finish();
                 break;
