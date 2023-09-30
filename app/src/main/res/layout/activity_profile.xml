@@ -150,9 +150,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_bg"
-        android:text="Módosítás"
+        android:text="Adat módosítás"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/profileConfirmPasswordEditText"
+        app:layout_constraintTop_toBottomOf="@+id/profileConfirmPasswordEditText" />
+
+    <Button
+        android:id="@+id/changePasswordButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_bg"
+        android:text="Jelszó módosítás"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/profileConfirmPasswordEditText"
         app:layout_constraintTop_toBottomOf="@+id/profileConfirmPasswordEditText" />
 
 
@@ -164,8 +175,9 @@
         android:background="@drawable/btn_bg"
         android:text="Törlés"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/profileConfirmPasswordEditText"
-        app:layout_constraintTop_toBottomOf="@+id/profileConfirmPasswordEditText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeButton" />
 
 
     <LinearLayout

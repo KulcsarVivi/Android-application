@@ -96,13 +96,12 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        //TODO Itt kell majd visszaadni a felhasználó adatait
                         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         if (user != null) {
                             userID = user.getUid();
-                            // Hozz létre egy új felhasználói rekordot az adatbázisban
+
                             profileModel = new ProfileModel(userID, username, email, password, score);
                             usersRef.child(userID).setValue(profileModel);
                             Toast.makeText(RegisterActivity.this, "Sikeres regisztráció!", Toast.LENGTH_SHORT).show();

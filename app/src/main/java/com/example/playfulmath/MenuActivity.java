@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,23 +38,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         logoutCardView.setOnClickListener((View.OnClickListener) this);
 
         mAuth = FirebaseAuth.getInstance();
-        /*logoutButton = findViewById(R.id.logoutButton);
-
-
-        //helloUsername = findViewById(R.id.helloTextView);           //hello
-        //username = getIntent().getExtras().getString("Username");//hello
-        //helloUsername.setText("Hello" + username);
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                Intent intent = new Intent(MenuActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });*/
-
     }
 
     @Override
