@@ -26,6 +26,7 @@ public class DifficultyLevelActivity extends AppCompatActivity {
         hard = findViewById(R.id.hardRadioButton);
 
         next = findViewById(R.id.nextButton);
+        gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,8 +36,6 @@ public class DifficultyLevelActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
 
         gameMenuBackCardView.setOnClickListener(new View.OnClickListener() {
             @Override

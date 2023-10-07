@@ -6,14 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.ktx.Firebase;
 
 public class LoginActivity extends AppCompatActivity {
-//TODO hibás felhasználónév jelszó kezelése, ha nem szerepel db-ben
     private TextView registerBtn;
     private EditText loginEmailEditText, loginPasswordEditText;
     private Button loginBtn;
@@ -61,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     
-    //TODO Try-catchal megcsinálni, progress bar
+    //TODO  progress bar
     private void checkDatas() {
         String email = loginEmailEditText.getText().toString();
         String password = loginPasswordEditText.getText().toString();
@@ -83,7 +86,6 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        //TODO Itt kell majd visszaadni a felhasználó adatait
                         Toast.makeText(LoginActivity.this, "Sikeres bejelentkezés!", Toast.LENGTH_SHORT).show();
                         mLoadingBar.dismiss();
                         Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
@@ -91,7 +93,11 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                     else {
-                        Toast.makeText(LoginActivity.this, "Helytelen felhasználónév vagy jelszó!", Toast.LENGTH_SHORT).show();
+                        Exception exception = task.getException();
+                        if (exception != null) {
+                            Log.e("LoginActivity", "Hiba történt a bejelentkezés során: " + exception.getMessage());
+                            Toast.makeText(LoginActivity.this, "Helytelen felhasználónév vagy jelszó!", Toast.LENGTH_SHORT).show();
+                        }
                         mLoadingBar.dismiss();
                     }
                 }

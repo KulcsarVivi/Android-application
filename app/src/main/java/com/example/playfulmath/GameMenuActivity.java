@@ -42,7 +42,7 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
             case R.id.gameMenuBackCardView:
-                i = new Intent(this, DifficultyLevelActivity.class);
+                i = new Intent(this, FruitActivity.class);
                 startActivity(i);
                 break;
         }

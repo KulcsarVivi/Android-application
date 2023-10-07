@@ -10,14 +10,12 @@ import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CardView profileCardView, infoCardView, badgeCardView, gameCardView, rankingListCardView, logoutCardView;
     FirebaseAuth mAuth;
-
-    TextView helloUsername;
-    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +34,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         gameCardView.setOnClickListener((View.OnClickListener) this);
         rankingListCardView.setOnClickListener((View.OnClickListener) this);
         logoutCardView.setOnClickListener((View.OnClickListener) this);
-
-        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
