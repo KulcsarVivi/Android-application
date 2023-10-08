@@ -16,11 +16,15 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     private CardView profileCardView, infoCardView, badgeCardView, gameCardView, rankingListCardView, logoutCardView;
     FirebaseAuth mAuth;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        mAuth = FirebaseAuth.getInstance();
+
         profileCardView = (CardView) findViewById(R.id.profileCardView);
         infoCardView = (CardView) findViewById(R.id.infoCardView);
         badgeCardView = (CardView) findViewById(R.id.badgeCardView);
@@ -61,11 +65,21 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.logoutCardView:
-                mAuth.signOut();
+                if(user != null) {
+                    mAuth.signOut();
+                    signOutUser();
+                }
                 i = new Intent(MenuActivity.this, LoginActivity.class);
                 startActivity(i);
                 finish();
                 break;
         }
+    }
+
+    private void signOutUser() {
+        Intent loginActivity = new Intent(MenuActivity.this, LoginActivity.class);
+        loginActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(loginActivity);
+        finish();
     }
 }

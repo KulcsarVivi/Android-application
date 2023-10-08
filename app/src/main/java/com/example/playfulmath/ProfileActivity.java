@@ -66,8 +66,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         switch (v.getId()) {
             case R.id.profileBackCardView:
-                i = new Intent(this, MenuActivity.class);
+                i = new Intent(ProfileActivity.this, MenuActivity.class);
                 startActivity(i);
+                finish();
                 break;
             case R.id.changeButton:
                 String newProfileUsername = profileUsernameEditText.getText().toString();
@@ -89,7 +90,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                         profileDb.child("username").setValue(newProfileUsername);
                                         profileDb.child("email").setValue(newProfileEmail);
 
-                                        Toast.makeText(ProfileActivity.this, "Sikeres adat módosítás!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProfileActivity.this, "Sikeres adat módosítás! Jelentkezzen be újra!", Toast.LENGTH_SHORT).show();
+                                        signOutUser();
                                     } else {
                                         Exception exception = task.getException();
                                         if (exception != null) {
@@ -113,7 +115,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(ProfileActivity.this, "Sikeres jelszó módosítás!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProfileActivity.this, "Sikeres jelszó módosítás! Jelentkezzen be újra!", Toast.LENGTH_SHORT).show();
+                                        signOutUser();
                                     } else {
                                         Exception exception = task.getException();
                                         if (exception != null) {
@@ -133,10 +136,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ProfileActivity.this, "Sikeres fiók törlés!", Toast.LENGTH_SHORT).show();
-
-                                    Intent intent = new Intent(ProfileActivity.this,LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    signOutUser();
                                 } else {
                                     Exception exception = task.getException();
                                     if (exception != null) {
@@ -187,23 +187,26 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            // A felhasználó be van jelentkezve, így biztonságosan használhatjuk a FirebaseUser objektumot.
             String userId = user.getUid();
             DatabaseReference profileDb = FirebaseDatabase.getInstance().getReference("users").child(userId);
-            // További műveletek a felhasználóval...
             profileDb.removeValue()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(ProfileActivity.this, "HURRÁ törölve!", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toast.makeText(ProfileActivity.this, "NEMÁR!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         }
+    }
+
+    private void signOutUser() {
+        Intent loginActivity = new Intent(ProfileActivity.this, LoginActivity.class);
+        loginActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(loginActivity);
+        finish();
     }
 
 }
