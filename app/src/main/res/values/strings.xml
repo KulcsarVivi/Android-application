@@ -21,4 +21,6 @@
     <string name="app_info_kijelentkezes">Kijelentkezés: Ide kattintva tudtok kilépni a játékból.</string>
 
     <string name="app_info3">Örülök, hogy használjátok az alkalmazást, jó szórakozást kívánok!</string>
+    <string name="forgotPasswordDescription">Az e-mail cím beírása után, az új jelszó beállítása gombra kattintva, a regisztrált e-mail címre kiküldésre kerül egy link,
+        mely segítségével új jelszót tudtok beállítani!</string>
 </resources>

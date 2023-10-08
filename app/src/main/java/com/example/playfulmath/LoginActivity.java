@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.ktx.Firebase;
 
 public class LoginActivity extends AppCompatActivity {
-    private TextView registerBtn;
+    private TextView registerBtn, loginForgotPasswordTextView;
     private EditText loginEmailEditText, loginPasswordEditText;
     private Button loginBtn;
     //Ez lehetne static is?
@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         registerBtn = findViewById(R.id.registerTextView);
+        loginForgotPasswordTextView = findViewById(R.id.loginForgotPasswordTextView);
         loginEmailEditText = findViewById(R.id.loginEmailEditText);
         loginPasswordEditText = findViewById(R.id.loginPasswordEditText);
         loginBtn = findViewById(R.id.loginButton);
@@ -57,6 +58,17 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+
+        if(loginForgotPasswordTextView != null) {
+            loginForgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
                     startActivity(intent);
                     finish();
                 }

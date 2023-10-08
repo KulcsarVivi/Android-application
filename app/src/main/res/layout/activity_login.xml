@@ -11,16 +11,18 @@
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/title_bg"
+        android:padding="6dp"
         android:text="Bejelentkezés"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22000003" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <EditText
         android:id="@+id/loginEmailEditText"
@@ -69,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginEmailEditText" />
 
     <TextView
-        android:id="@+id/forgotPasswordTextView"
+        android:id="@+id/loginForgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -90,7 +92,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/loginPasswordEditText"
         app:layout_constraintStart_toStartOf="@+id/loginPasswordEditText"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/loginForgotPasswordTextView" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
