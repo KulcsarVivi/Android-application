@@ -1,13 +1,13 @@
 package com.example.playfulmath.model;
 
 public class ProfileModel {
-    private String userID, username, email;
+    private String userID, userName, email;
     private int score;
 
     public ProfileModel(){}
-    public ProfileModel(String userID,String username, String email, String password, int score) {
+    public ProfileModel(String userID, String userName, String email, String password, int score) {
         this.userID = userID;
-        this.username = username;
+        this.userName = userName;
         this.email = email;
         this.score = 0;
     }
@@ -20,12 +20,12 @@ public class ProfileModel {
         this.userID = userID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {

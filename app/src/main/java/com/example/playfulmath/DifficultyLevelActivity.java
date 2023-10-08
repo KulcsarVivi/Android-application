@@ -12,9 +12,8 @@ import android.widget.RadioButton;
 
 public class DifficultyLevelActivity extends AppCompatActivity {
 
-    private CardView gameMenuBackCardView;
+    private CardView gameMenuBackCardView, difficultyLevelNextCardView;
     private RadioButton easy, medium, hard;
-    private Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +24,10 @@ public class DifficultyLevelActivity extends AppCompatActivity {
         medium = findViewById(R.id.mediumRadioButton);
         hard = findViewById(R.id.hardRadioButton);
 
-        next = findViewById(R.id.nextButton);
+        difficultyLevelNextCardView = (CardView) findViewById(R.id.difficultyLevelNextCardView);
         gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
 
-        next.setOnClickListener(new View.OnClickListener() {
+        difficultyLevelNextCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DifficultyLevelActivity.this, FruitActivity.class);
