@@ -64,7 +64,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(ForgotPasswordActivity.this, "A megadott e-mailcímre kiküldésre került a link.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ForgotPasswordActivity.this, "A megadott e-mail címre kiküldésre került a link.", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
