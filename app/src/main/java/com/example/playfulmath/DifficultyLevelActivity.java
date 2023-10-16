@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 
 public class DifficultyLevelActivity extends AppCompatActivity {
 
-    private CardView gameMenuBackCardView, difficultyLevelNextCardView;
+    private CardView gameMenuBackCardView;
     private RadioButton easy, medium, hard;
 
     @Override
@@ -24,17 +24,7 @@ public class DifficultyLevelActivity extends AppCompatActivity {
         medium = findViewById(R.id.mediumRadioButton);
         hard = findViewById(R.id.hardRadioButton);
 
-        difficultyLevelNextCardView = (CardView) findViewById(R.id.difficultyLevelNextCardView);
         gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
-
-        difficultyLevelNextCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DifficultyLevelActivity.this, FruitActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         gameMenuBackCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +34,29 @@ public class DifficultyLevelActivity extends AppCompatActivity {
                 finish();
             }
         });
+        easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startFruit("easy");
+            }
+        });
+        medium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startFruit("medium");
+            }
+        });
+        hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startFruit("hard");
+            }
+        });
     }
-    //TODO itt még majd be kell állítani a nehézséget activity indítás előtt!
-    // TODO kiválasztani a megfelelő szintet és egy buttonnal léptetni a kövi Activity-re
+
+    private void startFruit(String difficulty) {
+        Intent intent = new Intent(this, FruitActivity.class);
+        intent.putExtra("difficulty", difficulty);
+        startActivity(intent);
+    }
 }
