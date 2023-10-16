@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,6 +19,8 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_menu);
+
+
 
         additionCardView = (CardView) findViewById(R.id.additionCardView);
         subtractionCardView = (CardView) findViewById(R.id.subtractionCardView);
@@ -33,9 +36,7 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
         Intent i;
         switch (v.getId()) {
             case R.id.additionCardView:
-                i = new Intent(this, GameActivity.class);    //TODO game with +
-
-                startActivity(i);
+                onOperation("+");
                 break;
             case R.id.subtractionCardView:
                 i = new Intent(this, GameActivity.class);      //TODO game with -
@@ -46,5 +47,18 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(i);
                 break;
         }
+    }
+
+    private void onOperation(String operation) {
+        String difficulty = getIntent().getStringExtra("difficulty");
+        String fruit = getIntent().getStringExtra("fruit");
+        startGame(fruit, difficulty, operation);
+    }
+    private void startGame(String fruit, String difficulty, String operation) {
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("fruit", fruit);
+        intent.putExtra("difficulty", difficulty);
+        intent.putExtra("operation", operation);
+        startActivity(intent);
     }
 }
