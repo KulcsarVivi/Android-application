@@ -10,6 +10,7 @@ import android.view.View;
 public class FruitActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CardView fruitBackCardView, appleCardView, pearCardView, bananaCardView, grapeCardView, strawberryCardView, watermelonCardView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,35 +43,35 @@ public class FruitActivity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.appleCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
-                startActivity(i);
-                finish();
+                onFruit("apple");
                 break;
             case R.id.pearCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
-                startActivity(i);
-                finish();
+                onFruit("pear");
                 break;
             case R.id.bananaCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
-                startActivity(i);
-                finish();
+                onFruit("banana");
                 break;
             case R.id.grapeCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
-                startActivity(i);
-                finish();
+                onFruit("grape");
                 break;
             case R.id.strawberryCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
-                startActivity(i);
-                finish();
+                onFruit("strawberry");
                 break;
             case R.id.watermelonCardView:
-                i = new Intent(FruitActivity.this, GameMenuActivity.class);
-                startActivity(i);
-                finish();
+                onFruit("watermelon");
                 break;
         }
+    }
+
+    private void onFruit(String fruit) {
+        String difficulty = getIntent().getStringExtra("difficulty");
+        startOperation(fruit, difficulty);
+    }
+
+    private void startOperation(String fruit, String difficulty) {
+        Intent intent = new Intent(this, GameMenuActivity.class);
+        intent.putExtra("fruit", fruit);
+        intent.putExtra("difficulty", difficulty);
+        startActivity(intent);
     }
 }
