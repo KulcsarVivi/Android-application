@@ -3,8 +3,10 @@ package com.example.playfulmath;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,9 +21,7 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_menu);
-
-
-
+        
         additionCardView = (CardView) findViewById(R.id.additionCardView);
         subtractionCardView = (CardView) findViewById(R.id.subtractionCardView);
         gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);
@@ -39,8 +39,7 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
                 onOperation("+");
                 break;
             case R.id.subtractionCardView:
-                i = new Intent(this, GameActivity.class);      //TODO game with -
-                startActivity(i);
+                onOperation("-");
                 break;
             case R.id.gameMenuBackCardView:
                 i = new Intent(this, FruitActivity.class);

@@ -5,11 +5,12 @@ import java.util.List;
 public class GameModel {
 
     private int question1;
-    private String question1Image;
     private String operator;
     private int question2;
-    private String question2Image;
-    private List<OptionModel> options;
+    private int option1;
+    private int option2;
+    private int option3;
+    private int option4;
 
     public int getQuestion1() {
         return question1;
@@ -17,14 +18,6 @@ public class GameModel {
 
     public void setQuestion1(int question1) {
         this.question1 = question1;
-    }
-
-    public String getQuestion1Image() {
-        return question1Image;
-    }
-
-    public void setQuestion1Image(String question1Image) {
-        this.question1Image = question1Image;
     }
 
     public String getOperator() {
@@ -43,20 +36,36 @@ public class GameModel {
         this.question2 = question2;
     }
 
-    public String getQuestion2Image() {
-        return question2Image;
+    public int getOption1() {
+        return option1;
     }
 
-    public void setQuestion2Image(String question2Image) {
-        this.question2Image = question2Image;
+    public void setOption1(int option1) {
+        this.option1 = option1;
     }
 
-    public List<OptionModel> getOptions() {
-        return options;
+    public int getOption2() {
+        return option2;
     }
 
-    public void setOptions(List<OptionModel> options) {
-        this.options = options;
+    public void setOption2(int option2) {
+        this.option2 = option2;
+    }
+
+    public int getOption3() {
+        return option3;
+    }
+
+    public void setOption3(int option3) {
+        this.option3 = option3;
+    }
+
+    public int getOption4() {
+        return option4;
+    }
+
+    public void setOption4(int option4) {
+        this.option4 = option4;
     }
 
     public int getCorrectAnswer() {

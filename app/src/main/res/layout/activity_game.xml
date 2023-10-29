@@ -7,6 +7,21 @@
     tools:context=".GameActivity"
     android:background="@drawable/bg">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageViewLoading"
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            android:background="@drawable/bg"
+            android:src="@drawable/game_exit_icon" />
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/xRelativeLayout"
         android:layout_width="wrap_content"
@@ -52,6 +67,7 @@
         app:layout_constraintTop_toTopOf="@+id/xRelativeLayout">
 
         <TextView
+            android:id="@+id/gameTaskCounterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/textview_bg"
@@ -66,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="10dp"
-        android:background="@drawable/textview_bg"
+        android:background="@drawable/input_bg"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,9 +92,8 @@
 
         <ImageView
             android:id="@+id/gameNumber1ImageView"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
-            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_width="142dp"
+            android:layout_height="142dp"
             android:layout_centerVertical="true">
         </ImageView>
 
@@ -86,16 +101,14 @@
             android:id="@+id/gameOperationImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/fruit_watermelon_icon"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true">
         </ImageView>
 
         <ImageView
             android:id="@+id/gameNumber2ImageView"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
-            android:src="@drawable/fruit_watermelon_icon"
+            android:layout_width="142dp"
+            android:layout_height="142dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true">
         </ImageView>
@@ -107,7 +120,10 @@
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="55dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:padding="20dp"
+        android:background="@drawable/title_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
@@ -119,7 +135,6 @@
             android:layout_height="170dp"
             android:background="@drawable/input_bg"
             android:padding="10dp"
-            android:src="@drawable/fruit_watermelon_icon"
             android:layout_alignParentLeft="true"
             >
         </ImageView>
@@ -130,7 +145,6 @@
             android:layout_height="170dp"
             android:background="@drawable/input_bg"
             android:padding="10dp"
-            android:src="@drawable/fruit_watermelon_icon"
             android:layout_alignParentRight="true">
         </ImageView>
 
@@ -140,7 +154,6 @@
             android:layout_height="170dp"
             android:background="@drawable/input_bg"
             android:padding="10dp"
-            android:src="@drawable/fruit_watermelon_icon"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true">
         </ImageView>
@@ -151,7 +164,6 @@
             android:layout_height="170dp"
             android:background="@drawable/input_bg"
             android:padding="10dp"
-            android:src="@drawable/fruit_watermelon_icon"
             app:layout_constraintTop_toBottomOf="@+id/gameAnswer2ImageView"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true">
