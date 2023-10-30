@@ -4,16 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.playfulmath.model.GameModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,19 +36,18 @@ import java.util.List;
 public class GameActivity extends AppCompatActivity {
 
     private CardView gameNextCardView, gameExitCardView;
-    private DatabaseReference dbRef;
     private ImageView gameNumber1ImageView, gameOperationImageView, gameNumber2ImageView,
             gameAnswer1ImageView, gameAnswer2ImageView, gameAnswer3ImageView, gameAnswer4ImageView, imageViewLoading;
-    private List<GameModel> questionList;
-    private int currentQuestionIndex = 0;
-    private int questionsPerGame = 1;
-    private int selectedAnswerPosition = -1;
-    private int correctAnswerPosition = -1;
-    private TextView gameTaskCounterTextView;
 
     private String selectedFruit;
     private String selectedDifficulty;
     private String selectedOperator;
+
+    private List<GameModel> questionList;
+    private int currentQuestionIndex = -1;
+    private int questionsPerGame = 1;
+    private int selectedAnswerPosition = -1;
+    private int correctAnswerPosition = -1;
 
     String question1ImageFileName;
     String question2ImageFileName;
@@ -52,12 +55,14 @@ public class GameActivity extends AppCompatActivity {
     String option2ImageFileName;
     String option3ImageFileName;
     String option4ImageFileName;
+    StorageReference baseReference;
+    private int ANSWER_OPTIONS = 4;
+    boolean[] selectedAnswers = new boolean[ANSWER_OPTIONS];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
 
         gameNextCardView = (CardView) findViewById(R.id.gameNextCardView);
         gameExitCardView = (CardView) findViewById(R.id.gameExitCardView);
@@ -77,13 +82,14 @@ public class GameActivity extends AppCompatActivity {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("game");
 
-        StorageReference baseReference = FirebaseStorage.getInstance().getReference("fruit/" + selectedFruit);
+        baseReference = FirebaseStorage.getInstance().getReference("fruit/" + selectedFruit);
 
         databaseReference.child(selectedDifficulty).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 imageViewLoading.setVisibility(View.VISIBLE);
 
+                questionList = new ArrayList<>();
                 for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
                     String operator = questionSnapshot.child("operator").getValue(String.class);
 
@@ -104,33 +110,10 @@ public class GameActivity extends AppCompatActivity {
                         gameModel.setOption3(option3);
                         gameModel.setOption4(option4);
 
-                        question1ImageFileName = gameModel.getQuestion1() + ".jpg";
-                        question2ImageFileName = gameModel.getQuestion2() + ".jpg";
-                        option1ImageFileName = gameModel.getOption1() + ".jpg";
-                        option2ImageFileName = gameModel.getOption2() + ".jpg";
-                        option3ImageFileName = gameModel.getOption3() + ".jpg";
-                        option4ImageFileName = gameModel.getOption4() + ".jpg";
+                        questionList.add(gameModel);
 
 
-                        StorageReference question1ImageReference = baseReference.child(question1ImageFileName);
-                        manageImage(question1ImageReference, gameNumber1ImageView);
-
-                        StorageReference question2ImageReference = baseReference.child(question2ImageFileName);
-                        manageImage(question2ImageReference, gameNumber2ImageView);
-
-                        StorageReference option1ImageReference = baseReference.child(option1ImageFileName);
-                        manageImage(option1ImageReference, gameAnswer1ImageView);
-
-                        StorageReference option2ImageReference = baseReference.child(option2ImageFileName);
-                        manageImage(option2ImageReference, gameAnswer2ImageView);
-
-                        StorageReference option3ImageReference = baseReference.child(option3ImageFileName);
-                        manageImage(option3ImageReference, gameAnswer3ImageView);
-
-                        StorageReference option4ImageReference = baseReference.child(option4ImageFileName);
-                        manageImage(option4ImageReference, gameAnswer4ImageView);
-
-                        if (selectedOperator.equals("+")){
+                        if(selectedOperator.equals("+")){
                             String imagePath = "drawable/plus_icon";
                             Picasso.get().load(getResources().getIdentifier(imagePath, "drawable", getPackageName())).into(gameOperationImageView);
                         }
@@ -141,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
 
                     }
                 }
-                imageViewLoading.setVisibility(View.GONE);
+                showNextQuestion();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -152,9 +135,7 @@ public class GameActivity extends AppCompatActivity {
         gameNextCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this, ResultActivity.class);
-                startActivity(intent);
-                finish(); //TODO Kövi kérdésre vinni
+                showNextQuestion();
             }
         });
 
@@ -164,6 +145,33 @@ public class GameActivity extends AppCompatActivity {
                 Intent intent = new Intent(GameActivity.this, ResultActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        gameAnswer1ImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer(gameAnswer1ImageView, 0);
+            }
+        });
+
+        gameAnswer2ImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer(gameAnswer2ImageView, 1);
+            }
+        });
+
+        gameAnswer3ImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer(gameAnswer3ImageView, 2);
+            }
+        });
+        gameAnswer4ImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer(gameAnswer4ImageView, 3);
             }
         });
     }
@@ -180,16 +188,161 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    private void checkAnswer(int selectedAnswerPosition, int correctAnswerPosition) {
-        if (selectedAnswerPosition == correctAnswerPosition) {
-            //GameModel gameModel?
+
+    private void showNextQuestion() {
+        if (currentQuestionIndex < questionList.size() - 1) {
+            currentQuestionIndex++;
+            resetAnswerState();
+            GameModel nextQuestion = questionList.get(currentQuestionIndex);
+            enableUnanswered();
+            loadQuestionImages(nextQuestion);
         } else {
-            // :'(
+            handleGameEnd();
+        }
+        imageViewLoading.setVisibility(View.GONE);
+    }
+
+    private void loadQuestionImages(GameModel gameModel) {
+        question1ImageFileName = gameModel.getQuestion1() + ".jpg";
+        question2ImageFileName = gameModel.getQuestion2() + ".jpg";
+        option1ImageFileName = gameModel.getOption1() + ".jpg";
+        option2ImageFileName = gameModel.getOption2() + ".jpg";
+        option3ImageFileName = gameModel.getOption3() + ".jpg";
+        option4ImageFileName = gameModel.getOption4() + ".jpg";
+
+        int correctAnswer = gameModel.getCorrectAnswer();
+        correctAnswerPosition = findCorrectAnswerPosition(correctAnswer);
+
+        manageImage(baseReference.child(question1ImageFileName), gameNumber1ImageView);
+        manageImage(baseReference.child(question2ImageFileName), gameNumber2ImageView);
+        manageImage(baseReference.child(option1ImageFileName), gameAnswer1ImageView);
+        manageImage(baseReference.child(option2ImageFileName), gameAnswer2ImageView);
+        manageImage(baseReference.child(option3ImageFileName), gameAnswer3ImageView);
+        manageImage(baseReference.child(option4ImageFileName), gameAnswer4ImageView);
+    }
+
+    private int findCorrectAnswerPosition(int correctAnswer) {
+        for (int i = 0; i < ANSWER_OPTIONS; i++) {
+            if (questionList.get(currentQuestionIndex).getOptions().get(i) == correctAnswer) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void handleGameEnd() {
+        Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void checkAnswer(ImageView selectedAnswerImageView, int selectedAnswerPosition) {
+        //a válasz már kiválasztott?
+        if (selectedAnswers[selectedAnswerPosition]) {
+            return; //ha igen nem kell mégegyszer foglalkozni vele
+        }
+
+        //ne lehessen újra kiválasztani választ
+        disableAllAnswers();
+
+        selectedAnswers[selectedAnswerPosition] = true;
+        if (selectedAnswerPosition == correctAnswerPosition) {
+            choseCorrectAnswer(selectedAnswerImageView);
+        } else {
+            choseIncorrectAnswer(selectedAnswerImageView);
         }
     }
 
-    /*private void loadImageForGameModel(GameModel gameModel, String imageFileName, ImageView imageView) {
-        StorageReference imageReference = FirebaseStorage.getInstance().getReference("fruit/" + selectedFruit + "/" + imageFileName);
-        manageImage(imageReference, imageView);
-    }*/
+
+    private ImageView getAnswerImageViewIndex(int position) {
+        switch (position) {
+            case 0:
+                return gameAnswer1ImageView;
+            case 1:
+                return gameAnswer2ImageView;
+            case 2:
+                return gameAnswer3ImageView;
+            case 3:
+                return gameAnswer4ImageView;
+            default:
+                return null;
+        }
+    }
+    private void disableAllAnswers() {
+        for (int i = 0; i < ANSWER_OPTIONS; i++) {
+
+            ImageView answerImageView = getAnswerImageViewIndex(i);
+            answerImageView.setEnabled(false);//csak egy válasz jelölhető, így a többit majd le kell ezzel tiltani
+        }
+    }
+    private void resetAnswerState() {
+        for (int i = 0; i < ANSWER_OPTIONS; i++) {
+            selectedAnswers[i] = false; //állapot törlés
+            ImageView answerImageView = getAnswerImageViewIndex(i);
+
+            answerImageView.setBackgroundResource(android.R.color.transparent); //TODO input_bg nevű xml-t valahogy betenni...
+        }
+    }
+
+    private void enableUnanswered() {
+        for (int i = 0; i < ANSWER_OPTIONS; i++) {
+            if (!selectedAnswers[i]) {
+                ImageView answerImageView = getAnswerImageViewIndex(i);
+                answerImageView.setEnabled(true);
+            }
+        }
+    }
+
+    private void actualCorrectAnswer(ImageView selectedAnswerImageView) {
+        selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
+    }
+
+
+    private void choseCorrectAnswer(ImageView selectedAnswerImageView) {
+        selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
+
+        showPopupDialog("Szép munka!", R.drawable.emoji_good_icon, 3000);
+    }
+
+    private void choseIncorrectAnswer(ImageView selectedAnswerImageView) {
+        selectedAnswerImageView.setBackgroundResource(R.drawable.hard_bg);
+
+        //Helyes válasz megmutatása
+        int correctAnswerImageViewPosition = correctAnswerPosition;
+        ImageView correctAnswerImageView = getAnswerImageViewIndex(correctAnswerImageViewPosition);
+        actualCorrectAnswer(correctAnswerImageView);
+
+        showPopupDialog("Sajnos nem jó válasz!", R.drawable.emoji_bad_icon, 3000);
+    }
+
+    public void showPopupDialog(String message, int image, long duration) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
+
+        if (message != null) {
+            alertDialogBuilder.setMessage(message);
+        }
+
+        if (image != 0) {
+            ImageView imageView = new ImageView(this);
+            imageView.setImageResource(image);
+            alertDialogBuilder.setView(imageView);
+        }
+
+        final AlertDialog dialog = alertDialogBuilder.create();
+        dialog.show();
+
+        if (duration > 0) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.dismiss();
+                }
+            }, duration);
+        }
+        WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+        layoutParams.gravity = Gravity.TOP;
+        layoutParams.y = 170; // felső margó
+        dialog.getWindow().setAttributes(layoutParams);
+    }
+
 }

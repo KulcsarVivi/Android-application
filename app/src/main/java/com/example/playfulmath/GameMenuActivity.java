@@ -21,7 +21,7 @@ public class GameMenuActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_menu);
-        
+
         additionCardView = (CardView) findViewById(R.id.additionCardView);
         subtractionCardView = (CardView) findViewById(R.id.subtractionCardView);
         gameMenuBackCardView = (CardView) findViewById(R.id.gameMenuBackCardView);

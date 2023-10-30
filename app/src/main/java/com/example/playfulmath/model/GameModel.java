@@ -1,5 +1,6 @@
 package com.example.playfulmath.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameModel {
@@ -75,5 +76,14 @@ public class GameModel {
             return question1 - question2;
         }
         return 0;
+    }
+
+    public List<Integer> getOptions() {
+        List<Integer> options = new ArrayList<>();
+        options.add(option1);
+        options.add(option2);
+        options.add(option3);
+        options.add(option4);
+        return options;
     }
 }
