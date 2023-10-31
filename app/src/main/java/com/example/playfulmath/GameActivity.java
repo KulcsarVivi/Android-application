@@ -1,25 +1,20 @@
 package com.example.playfulmath;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.playfulmath.model.GameModel;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +37,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView gameTaskCounterTextView;
     private int questionNumber = 0;
 
+    private int currentGameCorrectAnswer = 0;
+    private int currentGameIncorrectAnswer = 0;
 
     private String selectedFruit;
     private String selectedDifficulty;
@@ -238,7 +235,8 @@ public class GameActivity extends AppCompatActivity {
     private void handleGameEnd() {
         Intent intent = new Intent(GameActivity.this, ResultActivity.class);
 
-        //TODO pontszámot kezelni.
+        intent.putExtra("currentGameCorrectAnswer", currentGameCorrectAnswer);
+        intent.putExtra("currentGameIncorrectAnswer", currentGameIncorrectAnswer);
 
         startActivity(intent);
         finish();
@@ -301,13 +299,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private void actualCorrectAnswer(ImageView selectedAnswerImageView) {
-        selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
-    }
-
-
     private void choseCorrectAnswer(ImageView selectedAnswerImageView) {
         selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
+
+        currentGameCorrectAnswer++;
 
         showPopupDialog("Szép munka!", R.drawable.emoji_good_icon, 3000);
     }
@@ -315,10 +310,12 @@ public class GameActivity extends AppCompatActivity {
     private void choseIncorrectAnswer(ImageView selectedAnswerImageView) {
         selectedAnswerImageView.setBackgroundResource(R.drawable.hard_bg);
 
+        currentGameIncorrectAnswer++;
+
         //Helyes válasz megmutatása
         int correctAnswerImageViewPosition = correctAnswerPosition;
         ImageView correctAnswerImageView = getAnswerImageViewIndex(correctAnswerImageViewPosition);
-        actualCorrectAnswer(correctAnswerImageView);
+        correctAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
 
         showPopupDialog("Sajnos nem jó válasz!", R.drawable.emoji_bad_icon, 3000);
     }

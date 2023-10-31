@@ -12,6 +12,10 @@ public class ProfileModel {
         this.score = 0;
     }
 
+    public ProfileModel(String userID) {
+        this.userID = userID;
+    }
+
     public String getUserID() {
         return userID;
     }

@@ -48,23 +48,22 @@
             app:lottie_rawRes="@raw/animation_lmxmjxvs" />
 
         <TextView
+            android:id="@+id/resultCorrectAnswerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/lottieResultGood"
             android:layout_alignBottom="@+id/lottieResultGood"
             android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="141dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:layout_toEndOf="@+id/lottieResultGood"
-            android:padding="10dp"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="5">
-        </TextView>
+            android:padding="10dp"
+            android:text="5"
+            android:textSize="40dp"
+            android:textStyle="bold"></TextView>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieResultBad"
@@ -77,6 +76,7 @@
             app:lottie_rawRes="@raw/animation_lmxmz5oq" />
 
         <TextView
+            android:id="@+id/resultIncorrectAnswerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/lottieResultBad"
@@ -90,7 +90,7 @@
             android:layout_toEndOf="@+id/lottieResultGood"
             android:gravity="center"
             android:padding="10dp"
-            android:textSize="20dp"
+            android:textSize="40dp"
             android:textStyle="bold"
             android:text="0">
 
