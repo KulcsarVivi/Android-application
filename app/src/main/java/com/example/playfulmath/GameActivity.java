@@ -39,6 +39,10 @@ public class GameActivity extends AppCompatActivity {
     private ImageView gameNumber1ImageView, gameOperationImageView, gameNumber2ImageView,
             gameAnswer1ImageView, gameAnswer2ImageView, gameAnswer3ImageView, gameAnswer4ImageView, imageViewLoading;
 
+    private TextView gameTaskCounterTextView;
+    private int questionNumber = 0;
+
+
     private String selectedFruit;
     private String selectedDifficulty;
     private String selectedOperator;
@@ -111,7 +115,6 @@ public class GameActivity extends AppCompatActivity {
                         gameModel.setOption4(option4);
 
                         questionList.add(gameModel);
-
 
                         if(selectedOperator.equals("+")){
                             String imagePath = "drawable/plus_icon";
@@ -192,10 +195,12 @@ public class GameActivity extends AppCompatActivity {
     private void showNextQuestion() {
         if (currentQuestionIndex < questionList.size() - 1) {
             currentQuestionIndex++;
+            questionNumber++;
             resetAnswerState();
             GameModel nextQuestion = questionList.get(currentQuestionIndex);
             enableUnanswered();
             loadQuestionImages(nextQuestion);
+            updateQuestionNumber();
         } else {
             handleGameEnd();
         }
@@ -232,6 +237,9 @@ public class GameActivity extends AppCompatActivity {
 
     private void handleGameEnd() {
         Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+
+        //TODO pontszámot kezelni.
+
         startActivity(intent);
         finish();
     }
@@ -343,6 +351,11 @@ public class GameActivity extends AppCompatActivity {
         layoutParams.gravity = Gravity.TOP;
         layoutParams.y = 170; // felső margó
         dialog.getWindow().setAttributes(layoutParams);
+    }
+
+    private void updateQuestionNumber() {
+        gameTaskCounterTextView = findViewById(R.id.gameTaskCounterTextView);
+        gameTaskCounterTextView.setText("5/" + questionNumber);
     }
 
 }
