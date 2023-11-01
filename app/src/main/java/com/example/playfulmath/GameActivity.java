@@ -42,7 +42,7 @@ public class GameActivity extends AppCompatActivity {
 
     private String selectedFruit;
     private String selectedDifficulty;
-    private String selectedOperator;
+    private String selectedOperation;
 
     private List<GameModel> questionList;
     private int currentQuestionIndex = -1;
@@ -75,11 +75,10 @@ public class GameActivity extends AppCompatActivity {
         gameAnswer2ImageView = findViewById(R.id.gameAnswer2ImageView);
         gameAnswer3ImageView = findViewById(R.id.gameAnswer3ImageView);
         gameAnswer4ImageView = findViewById(R.id.gameAnswer4ImageView);
-        imageViewLoading = findViewById(R.id.imageViewLoading);
 
         selectedDifficulty = getIntent().getStringExtra("difficulty");
         selectedFruit = getIntent().getStringExtra("fruit");
-        selectedOperator = getIntent().getStringExtra("operation");
+        selectedOperation = getIntent().getStringExtra("operation");
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("game");
 
@@ -88,13 +87,12 @@ public class GameActivity extends AppCompatActivity {
         databaseReference.child(selectedDifficulty).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                imageViewLoading.setVisibility(View.VISIBLE);
 
                 questionList = new ArrayList<>();
                 for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
                     String operator = questionSnapshot.child("operator").getValue(String.class);
 
-                    if (selectedOperator.equals(operator)) {
+                    if (selectedOperation.equals(operator)) {
                         int question1 = questionSnapshot.child("question1").getValue(Integer.class);
                         int question2 = questionSnapshot.child("question2").getValue(Integer.class);
                         int option1 = questionSnapshot.child("option1").getValue(Integer.class);
@@ -113,7 +111,7 @@ public class GameActivity extends AppCompatActivity {
 
                         questionList.add(gameModel);
 
-                        if(selectedOperator.equals("+")){
+                        if(selectedOperation.equals("+")){
                             String imagePath = "drawable/plus_icon";
                             Picasso.get().load(getResources().getIdentifier(imagePath, "drawable", getPackageName())).into(gameOperationImageView);
                         }
@@ -142,9 +140,7 @@ public class GameActivity extends AppCompatActivity {
         gameExitCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this, ResultActivity.class);
-                startActivity(intent);
-                finish();
+                handleGameEnd();
             }
         });
 
@@ -201,7 +197,6 @@ public class GameActivity extends AppCompatActivity {
         } else {
             handleGameEnd();
         }
-        imageViewLoading.setVisibility(View.GONE);
     }
 
     private void loadQuestionImages(GameModel gameModel) {
@@ -237,6 +232,10 @@ public class GameActivity extends AppCompatActivity {
 
         intent.putExtra("currentGameCorrectAnswer", currentGameCorrectAnswer);
         intent.putExtra("currentGameIncorrectAnswer", currentGameIncorrectAnswer);
+
+        intent.putExtra("difficulty", selectedDifficulty);
+        intent.putExtra("fruit", selectedFruit);
+        intent.putExtra("operation", selectedOperation);
 
         startActivity(intent);
         finish();
@@ -304,7 +303,7 @@ public class GameActivity extends AppCompatActivity {
 
         currentGameCorrectAnswer++;
 
-        showPopupDialog("Szép munka!", R.drawable.emoji_good_icon, 3000);
+        showPopupDialog("Szép munka!", R.drawable.emoji_good_icon, 2000);
     }
 
     private void choseIncorrectAnswer(ImageView selectedAnswerImageView) {
@@ -317,7 +316,7 @@ public class GameActivity extends AppCompatActivity {
         ImageView correctAnswerImageView = getAnswerImageViewIndex(correctAnswerImageViewPosition);
         correctAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
 
-        showPopupDialog("Sajnos nem jó válasz!", R.drawable.emoji_bad_icon, 3000);
+        showPopupDialog("Sajnos nem jó válasz!", R.drawable.emoji_bad_icon, 2000);
     }
 
     public void showPopupDialog(String message, int image, long duration) {
@@ -346,7 +345,7 @@ public class GameActivity extends AppCompatActivity {
         }
         WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
         layoutParams.gravity = Gravity.TOP;
-        layoutParams.y = 170; // felső margó
+        layoutParams.y = 200; // felső margó
         dialog.getWindow().setAttributes(layoutParams);
     }
 

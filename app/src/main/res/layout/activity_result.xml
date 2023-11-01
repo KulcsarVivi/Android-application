@@ -11,11 +11,12 @@
         android:id="@+id/resultLottieLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/title_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999">
+        app:layout_constraintVertical_bias="0.04000002">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieResultCongrats"
@@ -28,20 +29,49 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/gameResultRealtiveLayout"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="370dp"
         android:layout_margin="20dp"
+        android:background="@drawable/textview_bg"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultLottieLinearLayout"
-        android:background="@drawable/textview_bg"
-        android:padding="10dp">
+        app:layout_constraintVertical_bias="0.0">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/title_bg">
+        <TextView
+            android:id="@+id/resultTotalScoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/star_icon"
+            android:layout_marginTop="3dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/resultTotalScoreTextView"/>
+    </RelativeLayout>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieResultGood"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="30dp"
             android:elevation="5dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
@@ -61,18 +91,19 @@
             android:layout_toEndOf="@+id/lottieResultGood"
             android:gravity="center"
             android:padding="10dp"
-            android:text="5"
-            android:textSize="40dp"
+            android:text="0"
+            android:textSize="50dp"
+            android:textColor="@color/blue"
             android:textStyle="bold"></TextView>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieResultBad"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
             android:elevation="5dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            android:layout_alignParentBottom="true"
             app:lottie_rawRes="@raw/animation_lmxmz5oq" />
 
         <TextView
@@ -90,11 +121,58 @@
             android:layout_toEndOf="@+id/lottieResultGood"
             android:gravity="center"
             android:padding="10dp"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:text="0">
+            android:text="0"
+            android:textColor="@color/blue"
+            android:textSize="50dp"
+            android:textStyle="bold">
 
         </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/resultButtonsRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameResultRealtiveLayout">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/resultNewGameCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/replay_icon" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/resultGoHomeCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/home_icon" />
+
+        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
