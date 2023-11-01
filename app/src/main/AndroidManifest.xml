@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayfulMath">
         <activity
+            android:name=".LoadingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity

@@ -206,19 +206,35 @@
             tools:layout_editor_absoluteY="575dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/profilePointTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="335dp"
-        android:background="@drawable/textview_bg"
-        android:text=" Pont "
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/title_bg"
+        android:layout_marginRight="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profileTextView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/profileTextView">
+
+        <TextView
+            android:id="@+id/profilePointTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="0"
+            android:textColor="@color/blue"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/profilePointTextView"
+            android:src="@drawable/star_icon" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.playfulmath.model.GameModel;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -126,7 +128,8 @@ public class GameActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // hibakezelés
+                Log.e("GameActivity", "Hiba történt az adatok lekérése során: " + databaseError.getMessage());
+                Toast.makeText(GameActivity.this, "Hiba történt az adatok lekérése során: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView registerBtn, loginForgotPasswordTextView;
     private EditText loginEmailEditText, loginPasswordEditText;
     private Button loginBtn;
-    //Ez lehetne static is?
     private FirebaseAuth mAuth;
     private ProgressDialog mLoadingBar;
 

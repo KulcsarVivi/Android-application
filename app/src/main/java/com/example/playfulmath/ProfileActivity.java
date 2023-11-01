@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private Button changeDataButton, changePasswordButton,deleteButton;
     private EditText profileUsernameEditText, profileEmailEditText, profilePasswordEditText, profileConfirmPasswordEditText;
+    private TextView profilePointTextView;
     private CardView backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         profileEmailEditText = (EditText) findViewById(R.id.profileEmailEditText);
         profilePasswordEditText = (EditText) findViewById(R.id.profilePasswordEditText);
         profileConfirmPasswordEditText = (EditText) findViewById(R.id.profileConfirmPasswordEditText);
+        profilePointTextView = findViewById(R.id.profilePointTextView);
 
         loadUserData();
 
@@ -170,11 +173,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     String email = dataSnapshot.child("email").getValue(String.class);
                     String password = dataSnapshot.child("password").getValue(String.class);
                     String confirmPassword = dataSnapshot.child("password").getValue(String.class);
+                    int score = dataSnapshot.child("score").getValue(Integer.class);
 
                     profileUsernameEditText.setText(username);
                     profileEmailEditText.setText(email);
                     profilePasswordEditText.setText(password);
                     profileConfirmPasswordEditText.setText(confirmPassword);
+                    profilePointTextView.setText(String.valueOf(score));
                 }
             }
             @Override

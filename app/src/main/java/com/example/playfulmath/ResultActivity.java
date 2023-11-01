@@ -3,11 +3,15 @@ package com.example.playfulmath;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.playfulmath.model.ProfileModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -91,12 +95,17 @@ public class ResultActivity extends AppCompatActivity {
                     databaseRef.child(profileModel.getUserID()).child("score").setValue(newScore);
                     resultTotalScoreTextView.setText(String.valueOf(newScore));
                 }
+                else {
+                    Toast.makeText(ResultActivity.this, "Nem található ilyen adat az adatbázisban.", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Hibakezelés
+                Log.e("ResultActivity", "Hiba történt az adatok lekérése során: " + databaseError.getMessage());
+                Toast.makeText(ResultActivity.this, "Hiba történt az adatok lekérése során: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
