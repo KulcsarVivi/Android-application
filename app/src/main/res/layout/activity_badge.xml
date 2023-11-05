@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,26 +7,124 @@
     tools:context=".BadgeActivity"
     android:background="@drawable/bg">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/badgeBackCardView"
-        android:layout_width="120dp"
+    <RelativeLayout
+        android:id="@+id/xRelativeLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill"
-        app:cardBackgroundColor="@color/orange"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:cardUseCompatPadding="true">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/back_icon" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/badgeBackCardView"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/back_icon" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/badgesRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/badge1ImageView"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:layout_above="@+id/badge2ImageView"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/title_bg"
+            android:padding="10dp"
+            android:src="@drawable/gray_badge_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/badge2ImageView"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="218dp"
+            android:layout_marginBottom="212dp"
+            android:background="@drawable/title_bg"
+            android:padding="10dp"
+            android:src="@drawable/gray_badge_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/badge3ImageView"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:layout_above="@+id/badge4ImageView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="215dp"
+            android:layout_marginLeft="215dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/title_bg"
+            android:padding="10dp"
+            android:src="@drawable/gray_badge_icon"></ImageView>
+
+
+        <ImageView
+            android:id="@+id/badge4ImageView"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:layout_above="@+id/badge6ImageView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/title_bg"
+            android:padding="10dp"
+            android:src="@drawable/gray_badge_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/badge5ImageView"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/title_bg"
+            android:padding="10dp"
+            android:src="@drawable/gray_badge_icon"></ImageView>
+
+        <ImageView
+            android:id="@+id/badge6ImageView"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:background="@drawable/title_bg"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/gray_badge_icon">
+        </ImageView>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

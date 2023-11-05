@@ -52,12 +52,7 @@ public class GameActivity extends AppCompatActivity {
     private int selectedAnswerPosition = -1;
     private int correctAnswerPosition = -1;
 
-    String question1ImageFileName;
-    String question2ImageFileName;
-    String option1ImageFileName;
-    String option2ImageFileName;
-    String option3ImageFileName;
-    String option4ImageFileName;
+    String question1ImageFileName, question2ImageFileName, option1ImageFileName, option2ImageFileName, option3ImageFileName, option4ImageFileName;
     StorageReference baseReference;
     private int ANSWER_OPTIONS = 4;
     boolean[] selectedAnswers = new boolean[ANSWER_OPTIONS];

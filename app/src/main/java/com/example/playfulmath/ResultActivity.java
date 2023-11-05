@@ -3,8 +3,6 @@ package com.example.playfulmath;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -50,6 +48,7 @@ public class ResultActivity extends AppCompatActivity {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         ProfileModel currentUserProfile = new ProfileModel(userId);
         updateTotalScore(currentUserProfile, currentGameCorrectAnswer);
+
 
         selectedDifficulty = getIntent().getStringExtra("difficulty");
         selectedFruit = getIntent().getStringExtra("fruit");
@@ -107,5 +106,6 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

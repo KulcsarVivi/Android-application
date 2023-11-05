@@ -103,7 +103,16 @@ public class RegisterActivity extends AppCompatActivity {
                         if (user != null) {
                             userID = user.getUid();
 
-                            profileModel = new ProfileModel(userID, username, email, password, score);
+                            profileModel = new ProfileModel(userID, username, email);
+
+                            profileModel.setScore(0);
+                            profileModel.setBadge1(false);
+                            profileModel.setBadge2(false);
+                            profileModel.setBadge3(false);
+                            profileModel.setBadge4(false);
+                            profileModel.setBadge5(false);
+                            profileModel.setBadge6(false);
+
                             usersRef.child(userID).setValue(profileModel);
                             Toast.makeText(RegisterActivity.this, "Sikeres regisztráció!", Toast.LENGTH_SHORT).show();
                         }
