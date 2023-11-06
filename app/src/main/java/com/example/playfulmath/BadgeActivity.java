@@ -87,7 +87,6 @@ public class BadgeActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Kezeld le a hibát, ha valami probléma történik a lekérés során.
                 Log.e("BadgeActivity", "Hiba történt az adatok lekérése során: " + databaseError.getMessage());
             }
         });
@@ -150,39 +149,4 @@ public class BadgeActivity extends AppCompatActivity {
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
         userRef.child(badgeName).setValue(badgeValue);
     }
-
-    /*private void displayBadges() {
-        displayBadgeImage(badge1ImageView, badge1Value, "badge1.PNG");
-        displayBadgeImage(badge2ImageView, badge2Value, "badge2.PNG");
-        displayBadgeImage(badge3ImageView, badge3Value, "badge3.PNG");
-        displayBadgeImage(badge4ImageView, badge4Value, "badge4.PNG");
-        displayBadgeImage(badge5ImageView, badge5Value, "badge5.PNG");
-        displayBadgeImage(badge6ImageView, badge6Value, "badge6.PNG");
-    }
-
-    private void displayBadgeImage(final ImageView badgeImageView, boolean badgeValue, String badgeName) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-
-        StorageReference badgeRef = storageRef.child("badge/" + badgeName);
-        badgeRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        if (badgeValue) {
-                            String imageUrl = uri.toString();
-                            Picasso.get().load(imageUrl).into(badgeImageView);
-                            Toast.makeText(BadgeActivity.this, "képbetöltés sikeres", Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Picasso.get().load(R.drawable.gray_badge_icon).into(badgeImageView);
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("BadgeActivity", "Hiba a jelvény letöltésekor: " + e.getMessage());
-                    }
-                });
-    }*/
 }

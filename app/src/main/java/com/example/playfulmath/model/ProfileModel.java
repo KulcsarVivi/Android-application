@@ -4,7 +4,11 @@ public class ProfileModel {
     private String userID, username, email;
     private int score;
     private boolean badge1, badge2, badge3, badge4, badge5, badge6;
-    public ProfileModel(){
+
+    public ProfileModel() { }
+    public ProfileModel(String username, int score) {
+        this.username = username;
+        this.score = score;
     }
     public ProfileModel(String userID, String username, String email) {
         this.userID = userID;
