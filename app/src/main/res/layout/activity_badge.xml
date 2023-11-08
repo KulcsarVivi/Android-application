@@ -39,19 +39,50 @@
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/badgesRelativeLayout"
+
+    <LinearLayout
+        android:id="@+id/badgeLottieLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/title_bg"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieProfile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:padding="4dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/badge_anim"
+            tools:layout_editor_absoluteX="180dp"
+            tools:layout_editor_absoluteY="575dp" />
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/badgesConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="40dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
-        android:layout_centerVertical="true">
+        app:layout_constraintTop_toBottomOf="@+id/badgeLottieLinearLayout"
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageView
             android:id="@+id/badge1ImageView"
@@ -59,11 +90,13 @@
             android:layout_height="165dp"
             android:layout_above="@+id/badge2ImageView"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="35dp"
-            android:layout_marginBottom="23dp"
-            android:background="@drawable/title_bg"
-            android:padding="10dp"
-            android:src="@drawable/gray_badge_icon"></ImageView>
+            android:layout_margin="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="24dp"
+            android:src="@drawable/gray_badge_icon"
+            app:layout_constraintEnd_toStartOf="@+id/badge2ImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
 
         <ImageView
             android:id="@+id/badge2ImageView"
@@ -71,11 +104,13 @@
             android:layout_height="165dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="218dp"
-            android:layout_marginBottom="212dp"
-            android:background="@drawable/title_bg"
-            android:padding="10dp"
-            android:src="@drawable/gray_badge_icon"></ImageView>
+            android:layout_margin="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="24dp"
+            android:src="@drawable/gray_badge_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
 
         <ImageView
             android:id="@+id/badge3ImageView"
@@ -84,13 +119,13 @@
             android:layout_above="@+id/badge4ImageView"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="215dp"
-            android:layout_marginLeft="215dp"
-            android:layout_marginBottom="18dp"
-            android:background="@drawable/title_bg"
-            android:padding="10dp"
-            android:src="@drawable/gray_badge_icon"></ImageView>
-
+            android:background="@drawable/input_bg"
+            android:padding="24dp"
+            android:src="@drawable/gray_badge_icon"
+            app:layout_constraintBottom_toTopOf="@+id/badge5ImageView"
+            app:layout_constraintEnd_toStartOf="@+id/badge4ImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badge1ImageView"></ImageView>
 
         <ImageView
             android:id="@+id/badge4ImageView"
@@ -99,32 +134,38 @@
             android:layout_above="@+id/badge6ImageView"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="21dp"
-            android:layout_marginRight="21dp"
-            android:layout_marginBottom="23dp"
-            android:background="@drawable/title_bg"
-            android:padding="10dp"
-            android:src="@drawable/gray_badge_icon"></ImageView>
+            android:layout_margin="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="24dp"
+            android:src="@drawable/gray_badge_icon"
+            app:layout_constraintBottom_toTopOf="@+id/badge6ImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/badge2ImageView"></ImageView>
 
         <ImageView
             android:id="@+id/badge5ImageView"
             android:layout_width="165dp"
             android:layout_height="165dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/title_bg"
-            android:padding="10dp"
-            android:src="@drawable/gray_badge_icon"></ImageView>
+            android:layout_margin="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="24dp"
+            android:src="@drawable/gray_badge_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/badge6ImageView"
+            app:layout_constraintStart_toStartOf="parent"></ImageView>
 
         <ImageView
             android:id="@+id/badge6ImageView"
             android:layout_width="165dp"
             android:layout_height="165dp"
-            android:background="@drawable/title_bg"
-            android:padding="10dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/gray_badge_icon">
-        </ImageView>
-    </RelativeLayout>
+            android:layout_margin="10dp"
+            android:background="@drawable/input_bg"
+            android:padding="24dp"
+            android:src="@drawable/gray_badge_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"></ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
