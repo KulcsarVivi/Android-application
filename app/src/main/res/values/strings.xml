@@ -13,10 +13,11 @@
         és a gyümölcsöt, amivel szeretnétek a műveleteket végezni. Ezután elindul a kvíz. Itt 5 feladat következik egymás után. Közben és a végén is kaptok
         visszajelzést a válaszok helyességéről.</string>
 
-    <string name="app_info_jelvenyek">Jelvények: Ide kattintva megjelenik az összes jelvény, ezek közül, csak azon lesznek színesek, melyeket már megszereztél, a
-        többi szürkén fog megjelenni. Ha rákattintasz elolvashatod a jelvény nevét és, hogy miért kaptad.</string>
+    <string name="app_info_jelvenyek">Jelvények: Ide kattintva megjelennek a jelvények, ezek közül, csak azok lesznek színesek, melyeket már megszereztél, a
+        többi szürkén fog megjelenni.</string>
 
-    <string name="app_info_ranglista">Ranglista: Ide kattintva megjelenik az összes játékos pontszáma és, hogy ez alapján hanyadik helyet foglaljátok el a játékosok között.</string>
+    <string name="app_info_ranglista">Ranglista: Ide kattintva megjelenik az összes játékos pontszáma és, hogy ez alapján hanyadik helyet foglaljátok el a játékosok
+        között.</string>
 
     <string name="app_info_kijelentkezes">Kijelentkezés: Ide kattintva tudtok kilépni a játékból.</string>
 

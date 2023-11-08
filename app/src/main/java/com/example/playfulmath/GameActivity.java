@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -170,7 +173,6 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-
     private void manageImage(final StorageReference imageReference, final ImageView imageView) {
         imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -182,6 +184,23 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
+    public void zoomAnim(ImageView imageView) {
+        Animation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        scaleAnimation.setDuration(3000);
+        imageView.setVisibility(View.VISIBLE);
+        imageView.startAnimation(scaleAnimation);
+    }
+
+    public static void animStartFromX(View view, int startFromX) {
+        Animation slideInAnimation = new TranslateAnimation(startFromX, 0, 0, 0);
+        slideInAnimation.setDuration(2000);
+        view.startAnimation(slideInAnimation);
+    }
+    public static void animStartFromY(View view, int startFromY) {
+        Animation slideInAnimation = new TranslateAnimation(0, 0, startFromY, 0);
+        slideInAnimation.setDuration(2000);
+        view.startAnimation(slideInAnimation);
+    }
 
     private void showNextQuestion() {
         if (currentQuestionIndex < questionList.size() - 1) {
@@ -192,6 +211,22 @@ public class GameActivity extends AppCompatActivity {
             enableUnanswered();
             loadQuestionImages(nextQuestion);
             updateQuestionNumber();
+
+            animStartFromY(gameNumber1ImageView, -gameNumber1ImageView.getHeight());
+            animStartFromY(gameNumber2ImageView, -gameNumber2ImageView.getHeight());
+            zoomAnim(gameOperationImageView);
+            animStartFromX(gameAnswer1ImageView, -gameAnswer1ImageView.getWidth());
+            animStartFromX(gameAnswer2ImageView, gameAnswer2ImageView.getWidth());
+            animStartFromX(gameAnswer3ImageView, -gameAnswer3ImageView.getWidth());
+            animStartFromX(gameAnswer4ImageView, gameAnswer4ImageView.getWidth());
+
+            /*animateImage(gameNumber1ImageView);
+            animateImage(gameOperationImageView);
+            animateImage(gameNumber2ImageView);
+            animateImage(gameAnswer1ImageView);
+            animateImage(gameAnswer2ImageView);
+            animateImage(gameAnswer3ImageView);
+            animateImage(gameAnswer4ImageView);*/
         } else {
             handleGameEnd();
         }
@@ -283,7 +318,7 @@ public class GameActivity extends AppCompatActivity {
             selectedAnswers[i] = false; //állapot törlés
             ImageView answerImageView = getAnswerImageViewIndex(i);
 
-            answerImageView.setBackgroundResource(android.R.color.transparent); //TODO input_bg nevű xml-t valahogy betenni...
+            answerImageView.setBackgroundResource(R.drawable.input_bg);
         }
     }
 
@@ -298,7 +333,6 @@ public class GameActivity extends AppCompatActivity {
 
     private void choseCorrectAnswer(ImageView selectedAnswerImageView) {
         selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
-
         currentGameCorrectAnswer++;
 
         showPopupDialog("Szép munka!", R.drawable.emoji_good_icon, 2000);
@@ -306,7 +340,6 @@ public class GameActivity extends AppCompatActivity {
 
     private void choseIncorrectAnswer(ImageView selectedAnswerImageView) {
         selectedAnswerImageView.setBackgroundResource(R.drawable.hard_bg);
-
         currentGameIncorrectAnswer++;
 
         //Helyes válasz megmutatása
@@ -328,6 +361,11 @@ public class GameActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(image);
             alertDialogBuilder.setView(imageView);
+
+            // Felnagyítási animáció
+            Animation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            scaleAnimation.setDuration(500); // Animáció időtartama (ms)
+            imageView.startAnimation(scaleAnimation);
         }
 
         final AlertDialog dialog = alertDialogBuilder.create();
@@ -341,6 +379,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }, duration);
         }
+
         WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
         layoutParams.gravity = Gravity.TOP;
         layoutParams.y = 200; // felső margó
