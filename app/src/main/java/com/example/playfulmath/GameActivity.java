@@ -1,5 +1,9 @@
 package com.example.playfulmath;
 
+import static com.example.playfulmath.AnimationHelper.animStartFromX;
+import static com.example.playfulmath.AnimationHelper.animStartFromY;
+import static com.example.playfulmath.AnimationHelper.zoomAnim;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -37,7 +41,8 @@ public class GameActivity extends AppCompatActivity {
 
     private CardView gameNextCardView, gameExitCardView;
     private ImageView gameNumber1ImageView, gameOperationImageView, gameNumber2ImageView,
-            gameAnswer1ImageView, gameAnswer2ImageView, gameAnswer3ImageView, gameAnswer4ImageView, imageViewLoading;
+            gameAnswer1ImageView, gameAnswer2ImageView, gameAnswer3ImageView, gameAnswer4ImageView,
+            gameGoodImageView, gameBadImageView;
 
     private TextView gameTaskCounterTextView;
     private int questionNumber = 0;
@@ -75,6 +80,9 @@ public class GameActivity extends AppCompatActivity {
         gameAnswer2ImageView = findViewById(R.id.gameAnswer2ImageView);
         gameAnswer3ImageView = findViewById(R.id.gameAnswer3ImageView);
         gameAnswer4ImageView = findViewById(R.id.gameAnswer4ImageView);
+
+        gameGoodImageView = findViewById(R.id.gameGoodImageView);
+        gameBadImageView = findViewById(R.id.gameBadImageView);
 
         selectedDifficulty = getIntent().getStringExtra("difficulty");
         selectedFruit = getIntent().getStringExtra("fruit");
@@ -184,23 +192,7 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    public void zoomAnim(ImageView imageView) {
-        Animation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        scaleAnimation.setDuration(3000);
-        imageView.setVisibility(View.VISIBLE);
-        imageView.startAnimation(scaleAnimation);
-    }
 
-    public static void animStartFromX(View view, int startFromX) {
-        Animation slideInAnimation = new TranslateAnimation(startFromX, 0, 0, 0);
-        slideInAnimation.setDuration(2000);
-        view.startAnimation(slideInAnimation);
-    }
-    public static void animStartFromY(View view, int startFromY) {
-        Animation slideInAnimation = new TranslateAnimation(0, 0, startFromY, 0);
-        slideInAnimation.setDuration(2000);
-        view.startAnimation(slideInAnimation);
-    }
 
     private void showNextQuestion() {
         if (currentQuestionIndex < questionList.size() - 1) {
@@ -335,7 +327,7 @@ public class GameActivity extends AppCompatActivity {
         selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
         currentGameCorrectAnswer++;
 
-        showPopupDialog("Szép munka!", R.drawable.emoji_good_icon, 2000);
+        showPopupDialog( R.drawable.emoji_good_icon, 2000);
     }
 
     private void choseIncorrectAnswer(ImageView selectedAnswerImageView) {
@@ -347,16 +339,11 @@ public class GameActivity extends AppCompatActivity {
         ImageView correctAnswerImageView = getAnswerImageViewIndex(correctAnswerImageViewPosition);
         correctAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
 
-        showPopupDialog("Sajnos nem jó válasz!", R.drawable.emoji_bad_icon, 2000);
+        showPopupDialog(R.drawable.emoji_bad_icon, 2000);
     }
 
-    public void showPopupDialog(String message, int image, long duration) {
+    public void showPopupDialog(int image, long duration) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
-
-        if (message != null) {
-            alertDialogBuilder.setMessage(message);
-        }
-
         if (image != 0) {
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(image);
