@@ -41,8 +41,7 @@ public class GameActivity extends AppCompatActivity {
 
     private CardView gameNextCardView, gameExitCardView;
     private ImageView gameNumber1ImageView, gameOperationImageView, gameNumber2ImageView,
-            gameAnswer1ImageView, gameAnswer2ImageView, gameAnswer3ImageView, gameAnswer4ImageView,
-            gameGoodImageView, gameBadImageView;
+            gameAnswer1ImageView, gameAnswer2ImageView, gameAnswer3ImageView, gameAnswer4ImageView;
 
     private TextView gameTaskCounterTextView;
     private int questionNumber = 0;
@@ -81,12 +80,18 @@ public class GameActivity extends AppCompatActivity {
         gameAnswer3ImageView = findViewById(R.id.gameAnswer3ImageView);
         gameAnswer4ImageView = findViewById(R.id.gameAnswer4ImageView);
 
-        gameGoodImageView = findViewById(R.id.gameGoodImageView);
-        gameBadImageView = findViewById(R.id.gameBadImageView);
-
         selectedDifficulty = getIntent().getStringExtra("difficulty");
         selectedFruit = getIntent().getStringExtra("fruit");
         selectedOperation = getIntent().getStringExtra("operation");
+        if(selectedDifficulty == null){
+            selectedDifficulty = "easy";
+        }
+        if (selectedFruit == null){
+            selectedFruit = "apple";
+        }
+        if (selectedOperation == null){
+            selectedOperation = "+";
+        }
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("game");
 
@@ -211,14 +216,6 @@ public class GameActivity extends AppCompatActivity {
             animStartFromX(gameAnswer2ImageView, gameAnswer2ImageView.getWidth());
             animStartFromX(gameAnswer3ImageView, -gameAnswer3ImageView.getWidth());
             animStartFromX(gameAnswer4ImageView, gameAnswer4ImageView.getWidth());
-
-            /*animateImage(gameNumber1ImageView);
-            animateImage(gameOperationImageView);
-            animateImage(gameNumber2ImageView);
-            animateImage(gameAnswer1ImageView);
-            animateImage(gameAnswer2ImageView);
-            animateImage(gameAnswer3ImageView);
-            animateImage(gameAnswer4ImageView);*/
         } else {
             handleGameEnd();
         }
@@ -349,9 +346,9 @@ public class GameActivity extends AppCompatActivity {
             imageView.setImageResource(image);
             alertDialogBuilder.setView(imageView);
 
-            // Felnagyítási animáció
+            // Felnagyító animáció
             Animation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-            scaleAnimation.setDuration(500); // Animáció időtartama (ms)
+            scaleAnimation.setDuration(500);
             imageView.startAnimation(scaleAnimation);
         }
 
