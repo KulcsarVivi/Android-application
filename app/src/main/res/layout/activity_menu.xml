@@ -7,34 +7,34 @@
     tools:context=".MenuActivity"
     android:background="@drawable/bg">
 
-    <TextView
-        android:id="@+id/helloTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/helloTextView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_margin="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:columnCount="2"
         android:rowCount="3">
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/profileCardView"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="0"
+            android:layout_rowWeight="1"
             android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/profileCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -46,33 +46,30 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/menu_profil_ic"
-                    />
+                    android:src="@drawable/menu_profil_ic" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Profil"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/infoCardView"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="0"
+            android:layout_rowWeight="1"
             android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/infoCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -84,33 +81,30 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/menu_info_icon"
-                    />
+                    android:src="@drawable/menu_info_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Infó"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/badgeCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="1"
+            android:layout_rowWeight="1"
             android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/badgeCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -122,33 +116,32 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/menu_badge_ic"
-                    />
+                    android:src="@drawable/menu_badge_ic" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jelvények"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/gameCardView"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="1"
+            android:layout_rowWeight="1"
             android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/gameCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -160,33 +153,32 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/game2"
-                    />
+                    android:src="@drawable/game2" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Játék"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/rankingListCardView"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="2"
+            android:layout_rowWeight="1"
             android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/rankingListCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -198,33 +190,32 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/menu_podium_ic"
-                    />
+                    android:src="@drawable/menu_podium_ic" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ranglista"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/logoutCardView"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
             android:layout_row="2"
+            android:layout_rowWeight="1"
             android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            app:cardBackgroundColor="@color/orange"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@color/orange"
-            android:id="@+id/logoutCardView">
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -236,15 +227,14 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/menu_logout_ic"
-                    />
+                    android:src="@drawable/menu_logout_ic" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kijelentkezés"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
             </LinearLayout>
 

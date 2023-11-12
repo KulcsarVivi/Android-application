@@ -1,6 +1,5 @@
 package com.example.playfulmath;
 
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
@@ -14,7 +13,6 @@ public class AnimationHelper {
         imageView.setVisibility(View.VISIBLE);
         imageView.startAnimation(scaleAnimation);
     }
-
     public static void animStartFromX(View view, int startFromX) {
         Animation slideInAnimation = new TranslateAnimation(startFromX, 0, 0, 0);
         slideInAnimation.setDuration(2000);
@@ -25,5 +23,4 @@ public class AnimationHelper {
         slideInAnimation.setDuration(2000);
         view.startAnimation(slideInAnimation);
     }
-
 }

@@ -11,13 +11,13 @@
 
     <string name="app_info_jatek">Játék: Ide kattintva ki kell választani elsőként a nehézségi szintet, majd a tovább gombra kattintva a műveletet (összeadás/kivonás)
         és a gyümölcsöt, amivel szeretnétek a műveleteket végezni. Ezután elindul a kvíz. Itt 5 feladat következik egymás után. Közben és a végén is kaptok
-        visszajelzést a válaszok helyességéről.</string>
+        visszajelzést a válaszok helyességéről. A kvíz tetején található "X" gombbal, be tudjátok fejezni bármelyik kérdésnél a kvízt, és elétek tárul az elért eredmény.</string>
 
     <string name="app_info_jelvenyek">Jelvények: Ide kattintva megjelennek a jelvények, ezek közül, csak azok lesznek színesek, melyeket már megszereztél, a
         többi szürkén fog megjelenni.</string>
 
-    <string name="app_info_ranglista">Ranglista: Ide kattintva megjelenik az összes játékos pontszáma és, hogy ez alapján hanyadik helyet foglaljátok el a játékosok
-        között.</string>
+    <string name="app_info_ranglista">Ranglista: Ide kattintva megjelenik az összes játékos pontszáma és,
+        ez alapján rangsort állít fel közöttetek.</string>
 
     <string name="app_info_kijelentkezes">Kijelentkezés: Ide kattintva tudtok kilépni a játékból.</string>
 

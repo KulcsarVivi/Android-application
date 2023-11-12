@@ -62,12 +62,10 @@ public class FruitActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-
     private void onFruit(String fruit) {
         String difficulty = getIntent().getStringExtra("difficulty");
         startOperation(fruit, difficulty);
     }
-
     private void startOperation(String fruit, String difficulty) {
         Intent intent = new Intent(this, GameMenuActivity.class);
         intent.putExtra("fruit", fruit);

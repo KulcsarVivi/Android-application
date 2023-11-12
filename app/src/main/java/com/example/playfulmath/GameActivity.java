@@ -55,8 +55,6 @@ public class GameActivity extends AppCompatActivity {
 
     private List<GameModel> questionList;
     private int currentQuestionIndex = -1;
-    private int questionsPerGame = 1;
-    private int selectedAnswerPosition = -1;
     private int correctAnswerPosition = -1;
 
     String question1ImageFileName, question2ImageFileName, option1ImageFileName, option2ImageFileName, option3ImageFileName, option4ImageFileName;
@@ -100,7 +98,6 @@ public class GameActivity extends AppCompatActivity {
         databaseReference.child(selectedDifficulty).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 questionList = new ArrayList<>();
                 for (DataSnapshot questionSnapshot : dataSnapshot.getChildren()) {
                     String operator = questionSnapshot.child("operator").getValue(String.class);
@@ -196,9 +193,6 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
     private void showNextQuestion() {
         if (currentQuestionIndex < questionList.size() - 1) {
             currentQuestionIndex++;
@@ -220,7 +214,6 @@ public class GameActivity extends AppCompatActivity {
             handleGameEnd();
         }
     }
-
     private void loadQuestionImages(GameModel gameModel) {
         question1ImageFileName = gameModel.getQuestion1() + ".jpg";
         question2ImageFileName = gameModel.getQuestion2() + ".jpg";
@@ -239,7 +232,6 @@ public class GameActivity extends AppCompatActivity {
         manageImage(baseReference.child(option3ImageFileName), gameAnswer3ImageView);
         manageImage(baseReference.child(option4ImageFileName), gameAnswer4ImageView);
     }
-
     private int findCorrectAnswerPosition(int correctAnswer) {
         for (int i = 0; i < ANSWER_OPTIONS; i++) {
             if (questionList.get(currentQuestionIndex).getOptions().get(i) == correctAnswer) {
@@ -248,7 +240,6 @@ public class GameActivity extends AppCompatActivity {
         }
         return -1;
     }
-
     private void handleGameEnd() {
         Intent intent = new Intent(GameActivity.this, ResultActivity.class);
 
@@ -262,7 +253,6 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
     private void checkAnswer(ImageView selectedAnswerImageView, int selectedAnswerPosition) {
         //a válasz már kiválasztott?
         if (selectedAnswers[selectedAnswerPosition]) {
@@ -279,8 +269,6 @@ public class GameActivity extends AppCompatActivity {
             choseIncorrectAnswer(selectedAnswerImageView);
         }
     }
-
-
     private ImageView getAnswerImageViewIndex(int position) {
         switch (position) {
             case 0:
@@ -310,7 +298,6 @@ public class GameActivity extends AppCompatActivity {
             answerImageView.setBackgroundResource(R.drawable.input_bg);
         }
     }
-
     private void enableUnanswered() {
         for (int i = 0; i < ANSWER_OPTIONS; i++) {
             if (!selectedAnswers[i]) {
@@ -319,14 +306,12 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
-
     private void choseCorrectAnswer(ImageView selectedAnswerImageView) {
         selectedAnswerImageView.setBackgroundResource(R.drawable.easy_bg);
         currentGameCorrectAnswer++;
 
         showPopupDialog( R.drawable.emoji_good_icon, 2000);
     }
-
     private void choseIncorrectAnswer(ImageView selectedAnswerImageView) {
         selectedAnswerImageView.setBackgroundResource(R.drawable.hard_bg);
         currentGameIncorrectAnswer++;
@@ -338,7 +323,6 @@ public class GameActivity extends AppCompatActivity {
 
         showPopupDialog(R.drawable.emoji_bad_icon, 2000);
     }
-
     public void showPopupDialog(int image, long duration) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
         if (image != 0) {
@@ -374,5 +358,4 @@ public class GameActivity extends AppCompatActivity {
         gameTaskCounterTextView = findViewById(R.id.gameTaskCounterTextView);
         gameTaskCounterTextView.setText("5/" + questionNumber);
     }
-
 }

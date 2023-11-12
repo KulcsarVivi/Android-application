@@ -91,7 +91,6 @@ public class BadgeActivity extends AppCompatActivity {
             }
         });
     }
-//ÚÚÚJJ
     private void manageImage(final StorageReference imageReference, final ImageView imageView) {
         imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

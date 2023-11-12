@@ -74,20 +74,14 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
-    
-    //TODO  progress bar
     private void checkDatas() {
         String email = loginEmailEditText.getText().toString();
         String password = loginPasswordEditText.getText().toString();
-
         if(email.isEmpty() || !email.contains("@")){
             showError(loginEmailEditText, "Az e-mail cím érvénytelen.");
-        }
-        else if(password.isEmpty() || password.length() < 6) {
+        } else if(password.isEmpty() || password.length() < 6) {
             showError(loginPasswordEditText, "A jelszónak legalább 6 karakterből kell állnia.");
-        }
-        else
-        {
+        } else {
             mLoadingBar.setTitle("Bejelentkezés");
             mLoadingBar.setMessage("Kérlek várj!");
             mLoadingBar.setCanceledOnTouchOutside(false);
@@ -102,8 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
                         startActivity(intent);
                         finish();
-                    }
-                    else {
+                    } else {
                         Exception exception = task.getException();
                         if (exception != null) {
                             Log.e("LoginActivity", "Hiba történt a bejelentkezés során: " + exception.getMessage());
