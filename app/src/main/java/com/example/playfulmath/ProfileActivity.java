@@ -158,7 +158,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         input.requestFocus();
     }
 
-
     private void loadUserData() {
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

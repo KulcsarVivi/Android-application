@@ -26,8 +26,8 @@ public class RankingListActivity extends AppCompatActivity {
     private CardView rankingListBackCardView;
     private RecyclerView rankingListRecyclerView;
     private List<ProfileModel> rankingList;
-
     private DatabaseReference usersRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,12 +61,10 @@ public class RankingListActivity extends AppCompatActivity {
                     Integer score = userSnapshot.child("score").getValue(Integer.class);
 
                     if (username != null && score != null) {
-                        // Itt példányosítsd a ProfileModel objektumot a megfelelő adatokkal
                         ProfileModel rankingListItem = new ProfileModel(username, score);
                         rankingList.add(0, rankingListItem);    //0- a lista elejére pakolok, így lesz csökkenő
 
-                        // Az adatok megjelenítése a logcat-ben
-                        Log.d("Leaderboard", "Név: " + username + ", Pontszám: " + score);
+                        Log.d("RankingList", "Név: " + username + ", Pontszám: " + score);
                     }
                 }
 
@@ -74,10 +72,9 @@ public class RankingListActivity extends AppCompatActivity {
                 rankingListRecyclerView.setLayoutManager(new LinearLayoutManager(RankingListActivity.this));
                 rankingListRecyclerView.setAdapter(adapter);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.e("Leaderboard", "Hiba a ranglista lekérése során: " + databaseError.getMessage());
+                Log.e("RankingList", "Hiba a ranglista lekérése során: " + databaseError.getMessage());
             }
         });
     }

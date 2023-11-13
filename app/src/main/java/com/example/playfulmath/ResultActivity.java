@@ -49,14 +49,12 @@ public class ResultActivity extends AppCompatActivity {
         ProfileModel currentUserProfile = new ProfileModel(userId);
         updateTotalScore(currentUserProfile, currentGameCorrectAnswer);
 
-
         selectedDifficulty = getIntent().getStringExtra("difficulty");
         selectedFruit = getIntent().getStringExtra("fruit");
         selectedOperation = getIntent().getStringExtra("operation");
 
         resultCorrectAnswerTextView.setShadowLayer(5, 5, 5, Color.BLACK);
         resultIncorrectAnswerTextView.setShadowLayer(5, 5, 5, Color.BLACK);
-
         resultNewGameCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +67,6 @@ public class ResultActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         resultGoHomeCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,10 +76,8 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
     }
-
     private void updateTotalScore(ProfileModel profileModel, int additionalScore) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users");
-
         databaseRef.child(profileModel.getUserID()).child("score").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -98,7 +93,6 @@ public class ResultActivity extends AppCompatActivity {
                     Toast.makeText(ResultActivity.this, "Nem található ilyen adat az adatbázisban.", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e("ResultActivity", "Hiba történt az adatok lekérése során: " + databaseError.getMessage());

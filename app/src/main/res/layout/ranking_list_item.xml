@@ -53,5 +53,4 @@
         app:layout_constraintStart_toEndOf="@+id/rankingListScoreTextView"
         app:layout_constraintTop_toBottomOf="@+id/rankingListUserNameTextView"
         android:src="@drawable/star_icon"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
